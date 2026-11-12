@@ -133,3 +133,25 @@ form.addEventListener("submit", (e) => {
   status.className = "form-status ok";
   status.textContent = "Thanks! Your email app should open with your inquiry ready to send.";
 });
+
+// Project videos -> play in a pop-up
+const modal = document.getElementById("video-modal");
+const frame = modal.querySelector(".vm-frame");
+const openLink = modal.querySelector(".vm-open");
+
+function closeVideo() {
+  frame.innerHTML = ""; // stops playback
+  if (modal.open) modal.close();
+}
+document.querySelectorAll("[data-embed]").forEach((el) =>
+  el.addEventListener("click", () => {
+    frame.className = `vm-frame ${el.dataset.ratio}`;
+    frame.innerHTML = `<iframe src="${el.dataset.embed}" title="Project video" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>`;
+    openLink.href = el.dataset.link;
+    openLink.querySelector("span").textContent = el.dataset.kind;
+    modal.showModal();
+  })
+);
+modal.querySelector(".vm-close").addEventListener("click", closeVideo);
+modal.addEventListener("click", (e) => { if (e.target === modal) closeVideo(); });
+modal.addEventListener("cancel", (e) => { e.preventDefault(); closeVideo(); });
