@@ -2,22 +2,24 @@
 
 **Creative Video. AI-Powered. Built for Social.**
 
-A one-page static website for RFC Studio. It's plain HTML, CSS and JavaScript with no build step.
+A multi-page static website for RFC Studio. It's plain HTML, CSS and JavaScript with no build step.
 
-## Files
-- `index.html`: all page content (Home, Services, Why Us, Numbers, Process, Projects, About, FAQ, Contact)
-- `styles.css`: design (light lavender theme, purple `#9b4dff` → pink gradient, Poppins font)
-- `script.js`: animations, counters, accordion, mobile menu, contact form
+## Pages
+| File | Page |
+|---|---|
+| `index.html` | Home: hero with a phone mockup, stats, intro, services overview, why RFC, numbers, selected work |
+| `services.html` | Five services in detail + the process |
+| `projects.html` | Client projects with playable Instagram, TikTok and YouTube videos |
+| `about.html` | About + our approach |
+| `faq.html` | Frequently asked questions |
+| `contact.html` | Inquiry form |
 
-## Preview
-Open `index.html` in a browser.
+`styles.css` holds the whole design: navy and electric blue, with Bricolage Grotesque, Instrument Serif and Caveat fonts. `script.js` handles animations, the video pop-up, the mobile menu and the form.
 
 ## Customize
-- **Contact email**: change `CONTACT_EMAIL` at the top of `script.js`. The form opens the visitor's email app with the inquiry already filled in.
-- **Project videos**: put your clips in a `videos/` folder. Then, in `index.html`, replace a project's
-  `<span class="play">` placeholder with
-  `<video src="videos/your-clip.mp4" autoplay muted loop playsinline></video>`.
-- **Accent color**: edit `--accent` in `styles.css`.
+- **Contact email**: change `CONTACT_EMAIL` at the top of `script.js`.
+- **Colors**: edit the variables at the top of `styles.css` (`--navy`, `--blue`, `--ice`, …).
+- **Projects**: each project card in `projects.html` / `index.html` has `data-embed` (the video player URL) and `data-link` (the original post).
 
-## Publish (free)
-In GitHub, go to **Settings → Pages** and deploy from this branch's root folder. Netlify and Vercel also work: drag and drop the folder.
+## Publish
+In GitHub, go to **Settings → Pages** and deploy from this branch's root folder. The project videos play on the live site.
