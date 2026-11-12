@@ -6,7 +6,7 @@ A one-page static website for RFC Studio. It's plain HTML, CSS and JavaScript wi
 
 ## Files
 - `index.html`: all page content (Home, Services, Why Us, Numbers, Process, Projects, About, FAQ, Contact)
-- `styles.css`: design (dark minimalist theme, lime accent `#d4ff3a`)
+- `styles.css`: design (light lavender theme, purple `#9b4dff` → pink gradient, Poppins font)
 - `script.js`: animations, counters, accordion, mobile menu, contact form
 
 ## Preview
