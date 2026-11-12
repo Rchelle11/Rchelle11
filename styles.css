@@ -589,16 +589,12 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--b
   .cap, .toast { opacity: 1; }
 }
 
-/* Client logo on project covers (shown when logos/<client>.png exists; otherwise initials show) */
-.work-logo {
-  position: absolute; z-index: 1; left: 50%; top: 50%; translate: -50% -55%;
-  display: grid; place-items: center; width: 58%; height: 46%; padding: 18px;
-  border-radius: 22px; background: #fff; box-shadow: 0 20px 40px -18px rgba(0,0,30,.6);
-  transition: transform .45s var(--ease);
-}
-.work-logo img { position: static; width: 100%; height: 100%; object-fit: contain; }
-.work:hover .work-logo { transform: scale(1.04); }
-.work-cover .work-logo ~ .work-mono { display: none; }
-.work-logo.logo-dark { background: #000; box-shadow: 0 20px 40px -18px rgba(0,0,30,.8), inset 0 0 0 1px rgba(255,255,255,.12); }
-.work-cover .work-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* Client image / logo filling the whole project cover (falls back to initials if missing) */
+.work-cover .work-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.work:hover .work-art { transform: scale(1.04); }
 .work-cover .work-art ~ .work-mono { display: none; }
+.work-cover:has(.work-art)::before { display: none; }
+.work-cover:has(.work-art) { aspect-ratio: 1 / 1; }
+.work-cover::after { content: ""; position: absolute; inset: 0; z-index: 2; border-radius: inherit; box-shadow: inset 0 0 0 1px rgba(10,15,51,.1); pointer-events: none; }
+.work-plat { z-index: 3; background: rgba(5,10,58,.6); border-color: rgba(255,255,255,.2); }
+.work-play { z-index: 3; }
