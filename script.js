@@ -126,6 +126,7 @@ if (form) {
       `Name: ${data.get("name")}`,
       `Email: ${data.get("email")}`,
       `Company / Brand: ${data.get("company") || "—"}`,
+      `Starting point: ${data.get("package") || "—"}`,
       `Service(s): ${data.getAll("service").join(", ") || "Not specified"}`,
       `Number of videos: ${data.get("quantity") || "—"}`,
       `Timeline: ${data.get("timeline") || "—"}`,
@@ -133,9 +134,20 @@ if (form) {
       "Project details:",
       data.get("message"),
     ].join("\n");
-    const subject = `New project inquiry — ${data.get("company") || data.get("name")}`;
+    const subject = `${form.elements.package ? "New booking request" : "New project inquiry"} — ${data.get("company") || data.get("name")}`;
     window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     status.className = "form-status ok";
     status.textContent = "Thanks! Your email app should open with your inquiry ready to send.";
   });
 }
+
+// Book page: package buttons pre-fill the form
+document.querySelectorAll("[data-package]").forEach((btn) =>
+  btn.addEventListener("click", () => {
+    const f = document.getElementById("inquiry-form");
+    if (!f) return;
+    const radio = f.querySelector(`input[name="package"][value="${btn.dataset.package}"]`);
+    if (radio) radio.checked = true;
+    if (btn.dataset.qty && f.elements.quantity) f.elements.quantity.value = btn.dataset.qty;
+  })
+);

@@ -13,6 +13,7 @@ A multi-page static website for RFC Studio. It's plain HTML, CSS and JavaScript 
 | `about.html` | About + our approach |
 | `faq.html` | Frequently asked questions |
 | `contact.html` | Inquiry form |
+| `book.html` | Book now: what clients get, packages, why RFC, booking steps and form |
 
 `styles.css` holds the whole design: navy and electric blue, with Bricolage Grotesque, Instrument Serif and Caveat fonts. `script.js` handles animations, the video pop-up, the mobile menu and the form.
 
